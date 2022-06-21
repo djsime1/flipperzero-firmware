@@ -117,12 +117,22 @@ static bool text_box_view_input_callback(InputEvent* event, void* context) {
 
     TextBox* text_box = context;
     bool consumed = false;
-    if(event->type == InputTypeShort) {
+    if(event->type == InputTypeShort || event->type == InputTypeRepeat) {
         if(event->key == InputKeyDown) {
             text_box_process_down(text_box);
             consumed = true;
         } else if(event->key == InputKeyUp) {
             text_box_process_up(text_box);
+            consumed = true;
+        } else if(event->key == InputKeyRight) {
+            for(uint8_t i = 0; i < 8; i++) {
+                text_box_process_down(text_box);
+            }
+            consumed = true;
+        } else if(event->key == InputKeyLeft) {
+            for(uint8_t i = 0; i < 8; i++) {
+                text_box_process_up(text_box);
+            }
             consumed = true;
         }
     }
