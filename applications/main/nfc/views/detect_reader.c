@@ -18,6 +18,7 @@ static void detect_reader_draw_callback(Canvas* canvas, void* model) {
 
     snprintf(text, sizeof(text), "Tap the reader several times");
     canvas_draw_str_aligned(canvas, 64, 0, AlignCenter, AlignTop, "Tap the reader several times");
+    elements_button_center(canvas, "Options");
 
     if(m->nonces == 0) {
         canvas_set_font(canvas, FontPrimary);

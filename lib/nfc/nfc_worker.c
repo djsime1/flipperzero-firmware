@@ -682,6 +682,8 @@ void nfc_worker_analyze_reader(NfcWorker* nfc_worker) {
                 reader_analyzer_guess_protocol(reader_analyzer, tx_rx.rx_data, tx_rx.rx_bits / 8);
             if(protocol == NfcDeviceProtocolMifareClassic) {
                 mf_classic_emulator(&emulator, &tx_rx);
+            } else if(protocol == NfcDeviceProtocolMifareUl) {
+                // jazz
             }
         } else {
             FURI_LOG_D(TAG, "No data from reader");

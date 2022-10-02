@@ -20,6 +20,7 @@ typedef struct {
 
 typedef enum {
     ReaderAnalyzerNfcDataMfClassic,
+    ReaderAnalyzerNfcDataMfUl,
 } ReaderAnalyzerNfcData;
 
 struct ReaderAnalyzer {
@@ -195,6 +196,8 @@ NfcProtocol
 
     if((buff_rx[0] == 0x60) || (buff_rx[0] == 0x61)) {
         protocol = NfcDeviceProtocolMifareClassic;
+    } else if(buff_rx[0] == 0x1B) {
+        protocol = NfcDeviceProtocolMifareUl;
     }
 
     return protocol;
